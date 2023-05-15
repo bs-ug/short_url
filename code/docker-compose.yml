@@ -1,0 +1,9 @@
+version: "3.7"
+
+services:
+  short_url:
+    build: .
+    ports:
+      - "8000:8000"
+    command: python manage.py startserver 0.0.0.0:8000
+    restart: always
