@@ -13,4 +13,16 @@ Z długiego URLa robi krótkiego i odwrotnie.
 - zamykanie aplikacji: `docker-compose down`
 
 ## Używanie
-`http://localhost:8000/api`
+`http://localhost:8000/api/url`
+
+### Metody
+- `GET /api/url` - zwraca listę przetworzonych URLi w krótkiej i długiej wersji,
+- `GET /api/url?short=<str>` - zwraca długą wersję URLa dla krótkiego podanego w parametrze `short`,
+- `POST /api/url` - tworzy krótką wersję URLa dla długiej wysłanej w `body` zapytania.
+
+### `body` metody POST
+ ```
+ {
+   "long": <str>
+ }
+```

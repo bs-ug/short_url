@@ -3,7 +3,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 
 from code.app.api import create_short_url
-from code.app.api.serializers import ShortUrlSerializer, LongUrlSerializer, UrlSerializer
+from code.app.api.serializers import UrlSerializer
 from code.app.models import Url
 
 
@@ -28,8 +28,7 @@ class UrlViewset(viewsets.ViewSet):
         short=self.request.query_params.get("short")
         if short:
             url = get_object_or_404(queryset, short=short)
-            serializer = LongUrlSerializer(url)
-            return Response(serializer.data)
+            return Response(url.long)
         else:
             serializer = UrlSerializer(queryset, many=True)
             return Response(serializer.data)
@@ -41,5 +40,4 @@ class UrlViewset(viewsets.ViewSet):
             if not Url.objects.filter(short=short).exists():
                 url = Url.objects.create(long=long, short=short)
                 break
-        serializer = ShortUrlSerializer(url)
-        return Response(serializer.data)
+        return Response(url.short)
