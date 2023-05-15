@@ -3,10 +3,9 @@ from rest_framework import serializers
 
 
 class UrlSerializer(serializers.ModelSerializer):
-    short = serializers.CharField(required=False)
     class Meta:
         model = Url
-        fields = ["long", "short"]
+        fields = ["id", "long", "short"]
 
 
 class LongUrlSerializer(serializers.ModelSerializer):
