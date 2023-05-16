@@ -36,7 +36,7 @@ class UrlViewset(viewsets.ViewSet):
     def create(self, request, *args, **kwargs):
         long = self.request.data["long"]
         while True:
-            short = create_short_url()
+            short = create_short_url("http://" + request.get_host())
             if not Url.objects.filter(short=short).exists():
                 url = Url.objects.create(long=long, short=short)
                 break
