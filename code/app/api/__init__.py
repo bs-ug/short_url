@@ -3,8 +3,8 @@ import random, string
 
 def create_short_url(prefix):
     """
-    Just a simple sort url generator.
+    Just a simple short url generator.
 
-    :return: random url
+    :return: random short url
     """
-    return prefix + '/' + ''.join(random.choice(string.ascii_lowercase) for i in range(5))
+    return "http://" + prefix + '/' + ''.join(random.choice(string.ascii_lowercase) for i in range(5))
